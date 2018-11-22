@@ -364,9 +364,15 @@ class Model
         $this->setSort();
         $this->setPaginate();
 
-        $this->queries->unique()->each(function ($query) {
-            $this->model = call_user_func_array([$this->model, $query['method']], $query['arguments']);
-        });
+        //bole ref: https://github.com/z-song/laravel-admin/pull/2695/files/2c0b689038a6984f776c223c8a83907f77eb9fa7
+        // $this->queries->unique()->each(function ($query) {
+            // $this->model = call_user_func_array([$this->model, $query['method']], $query['arguments']);
+        // });
+
+        foreach ($this->queries->unique()->toArray() as $query) {
+            $tmp_model = call_user_func_array([$this->model, $query['method']], $query['arguments']);
+        }
+        $this->model = $tmp_model;
 
         if ($this->model instanceof Collection) {
             return $this->model;
