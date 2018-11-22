@@ -292,7 +292,8 @@ class Form implements Renderable
     public function destroy($id)
     {
         collect(explode(',', $id))->filter()->each(function ($id) {
-            $builder = $this->model()->newQuery();
+            // $builder = $this->model()->newQuery();
+            $builder = $this->model();
 
             if ($this->isSoftDeletes) {
                 $builder = $builder->withTrashed();
