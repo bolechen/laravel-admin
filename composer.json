@@ -1,6 +1,6 @@
 {
     "name": "bolechen/laravel-admin",
-    "description": "laravel admin:bug fix for last dev-master version, require dev-master",
+    "description": "fork from laravel-admin，修复了一些 bug，自用，有需要请看源项目",
     "type": "library",
     "keywords": ["laravel", "admin", "grid", "form"],
     "homepage": "https://github.com/bolechen/laravel-admin",
